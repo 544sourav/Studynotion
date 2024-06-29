@@ -22,7 +22,7 @@ export const LoginForm = () => {
         }
         dispatch(login(formData.email,formData.password,navigate))
         
-        console.log(accountData)
+       // console.log(accountData)
     
     }
 

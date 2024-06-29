@@ -48,7 +48,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         const orderResponse = await apiConnector("POST",COURSE_PAYMENT_API,{courses},{
             Authorization: `Bearer ${token}`
         })
-        console.log("orderResponse",orderResponse)
+        //console.log("orderResponse",orderResponse)
         if(!orderResponse.data.success){
             throw new Error(orderResponse.data.message)
         }

@@ -10,7 +10,7 @@ export const ViewCourse = () => {
     const [reviewModal,setReviewModal]= useState(false)
     const {courseId}=useParams();
 
-    console.log("courseId",courseId)
+    //console.log("courseId",courseId)
     
     const{token}=useSelector((state)=>state.auth)
     const dispatch = useDispatch()
@@ -24,7 +24,7 @@ export const ViewCourse = () => {
             // dispatch(setCompletedLectures([]))
             // dispatch(setTotalNoOfLectures(0))
             const courseData= await getFullDetailsOfCourse(courseId,token)
-            console.log("courseData",courseData)
+           // console.log("courseData",courseData)
             if(courseData){
                 dispatch(setCourseSectionData(courseData.courseDetails.courseContent))
                 dispatch(setEntireCourseData(courseData.courseDetails))
@@ -32,7 +32,7 @@ export const ViewCourse = () => {
     
                 let lectures=0;
                 courseData.courseDetails.courseContent.forEach((sec)=>{
-                    console.log("sec.subSection.length",sec.subSection.length)
+                   // console.log("sec.subSection.length",sec.subSection.length)
                     lectures+=sec.subSection.length
                 })
                 dispatch(setTotalNoOfLectures(lectures))

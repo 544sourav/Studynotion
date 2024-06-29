@@ -26,18 +26,18 @@ export const CourseDetail = () => {
     const dispatch= useDispatch()
 
     const {courseId}= useParams();
-    console.log("courseId from detail",courseId)
+    //console.log("courseId from detail",courseId)
 
     const [response, setResponse] = useState(null)
      const [confirmationModal, setConfirmationModal] = useState(null)
 
     useEffect(()=>{
-        console.log("courseId from detail effect")  
+        //console.log("courseId from detail effect")  
            const details = async()=>{
-                console.log("courseId from detail async")
+              //  console.log("courseId from detail async")
                 try{
                     const res = await fetchCourseDetails(courseId)
-                    console.log("res of fetch fn: ", res)
+                   // console.log("res of fetch fn: ", res)
                         setResponse(res)
                     
                 }
@@ -50,19 +50,19 @@ export const CourseDetail = () => {
             }  
     },[courseId])
 
-    console.log("response",response)
+    //console.log("response",response)
 
     const [avgRating,setAvgRating]=useState(0)
 
     useEffect(()=>{
         if(response!==null){
             const rating = GetAvgRating(response.data.courseDetail.ratingAndReviews)
-            console.log("rating",rating)
+           // console.log("rating",rating)
         setAvgRating(rating);
         }
         
     },[response])
-    console.log("avgRating",avgRating)
+    //console.log("avgRating",avgRating)
 
     const[totalLecture,setTotalLecture]= useState(0)
 

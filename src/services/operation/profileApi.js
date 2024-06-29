@@ -10,7 +10,7 @@ const{
 
 export async function getUserEnrolledCourses(token){
 
-        console.log("inside get enrolled courses call ",token)
+        //console.log("inside get enrolled courses call ",token)
         const toastId = toast.loading("Loading...")
         let result = []
 
@@ -43,7 +43,7 @@ export async function getInstructorData(token){
                 Authorization: `Bearer ${token}`
             }
         )
-        console.log("instructor api result",response)
+        //console.log("instructor api result",response)
         result=response.data.courses
 
     }

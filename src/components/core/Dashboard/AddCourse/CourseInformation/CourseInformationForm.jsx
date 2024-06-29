@@ -25,8 +25,8 @@ export const CourseInformationForm = () => {
 
   const {course, editCourse} = useSelector((state)=> state.course)
   const { token } = useSelector((state) => state.auth)
-  console.log("course-",course)
-  console.log("editcourse" ,editCourse)
+ // console.log("course-",course)
+ // console.log("editcourse" ,editCourse)
   const[loading,setLoading]= useState(false);
   const[coursesCategories,setCourseCategories]=useState([]);
 
@@ -71,7 +71,7 @@ export const CourseInformationForm = () => {
   }
 
   const onSubmit = async (data) => {
-     console.log(data)
+    // console.log(data)
 
     if (editCourse) {
 

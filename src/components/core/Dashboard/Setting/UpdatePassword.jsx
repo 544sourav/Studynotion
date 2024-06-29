@@ -22,7 +22,7 @@ export const UpdatePassword = () => {
 
     const submitHandler =async(data)=>{
         try{
-          console.log("password sent to update",data)
+          //console.log("password sent to update",data)
           dispatch(changePassword(token,data))
 
         }

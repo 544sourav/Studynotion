@@ -20,7 +20,7 @@ export const Instructor = () => {
         const getCourseDataWithStats  = async()=>{
             const InstructorApiData = await getInstructorData(token)
             const result = await getIntructorCourses(token)
-            console.log("InstructorApiData",InstructorApiData)
+            //console.log("InstructorApiData",InstructorApiData)
 
             if(InstructorApiData){
                 setInstructorData(InstructorApiData)

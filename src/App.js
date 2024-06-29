@@ -28,7 +28,7 @@ import { CourseDetail } from './pages/CourseDetail';
 import { ViewCourse } from './pages/ViewCourse';
 import { VideoDetails } from './components/core/ViewCourse/VideoDetails';
 import { Instructor } from './components/core/Dashboard/InstructorDashboard/Instructor';
-import xyz from '../server/node_modules'
+
 
 
 

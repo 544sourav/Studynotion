@@ -121,7 +121,7 @@ export default function CoursesTable({ courses, setCourses }) {
     setLoading(true)
     await deleteCourse({ courseId: courseId }, token)
     const result = await getIntructorCourses(token)
-    console.log("result",result)
+    //console.log("result",result)
     if (result) {
       setCourses(result)
     }
@@ -129,7 +129,7 @@ export default function CoursesTable({ courses, setCourses }) {
     setLoading(false)
   }
 
-   console.log("All Course ", courses)
+  // console.log("All Course ", courses)
 
   return (
     <>

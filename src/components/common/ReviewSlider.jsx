@@ -20,19 +20,19 @@ export const ReviewSlider = () => {
         const fetchAllReviews = async()=>{
             try{
                 const response = await apiConnector("GET",ratingsEndpoints.REVIEWS_DETAILS_API)
-                console.log("print response",response)
+               // console.log("print response",response)
                 if(!response.data.success){
                     throw new Error("Could not Fetch Reviews")
                 }
                 
                 setReviews(response.data.data)
 
-                console.log("print reviews",reviews)
+               // console.log("print reviews",reviews)
 
 
             }
             catch(error){
-                console.log("data not found",error)
+                //console.log("data not found",error)
 
             }
            

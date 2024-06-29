@@ -13,7 +13,7 @@ export const RenderTotalAmount = () => {
     const HandleBuyCourse = ()=>{
         const courses=cart.map((course)=>course._id);
         buyCourse(token, courses, user, navigate, dispatch)
-        console.log("bought these course",courses)
+       // console.log("bought these course",courses)
     }
   return (
     <div className="min-w-[280px] rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">

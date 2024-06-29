@@ -17,7 +17,7 @@ export const SubSectionModal = (
         edit=false,
     }
 ) => {
-         console.log("modal",modalData)
+       //  console.log("modal",modalData)
     const{
         register,
         handleSubmit,
@@ -104,13 +104,13 @@ export const SubSectionModal = (
         }
 
         const formData = new FormData();
-        console.log("video",data.lectureVideo)
+        //console.log("video",data.lectureVideo)
         formData.append("sectionId",modalData)
         formData.append("title",data.lectureTitle)
         formData.append("description",data.lectureDesc)
         formData.append("video",data.lectureVideo)
 
-        console.log("formData",formData.video)
+      //  console.log("formData",formData.video)
 
         setLoading(true);
         const result = await createSubSection(formData,token);

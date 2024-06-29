@@ -16,18 +16,18 @@ export const ContactUsForm = () => {
     }= useForm()
 
     const submitContactForm= async(data)=>{
-        console.log("form data",data)
+        //console.log("form data",data)
         try{
             setLoading(true);
             const response=await apiConnector("POST",contactusEndpoint.CONTACT_US_API,data)
 
-            console.log(response)
+            //console.log(response)
 
             setLoading(false)
 
         }
         catch(error){
-                console.log("Error-",error)
+                //console.log("Error-",error)
                 setLoading(false)
         }
     }

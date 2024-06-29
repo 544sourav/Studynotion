@@ -20,25 +20,25 @@ export const Catalog = () => {
     useEffect(()=>{
         const getCategory= async() => {
             const res = await apiConnector("GET",categories.CATEGORIES_API);
-            console.log("res",res)
+           // console.log("res",res)
 
             const category_id = res.data.data.filter((ct)=>ct.name.split(" ").join("-").toLowerCase()===catalogName)[0]._id;
-            console.log("category_id",category_id)
+           // console.log("category_id",category_id)
             setCategoryId(category_id);
         }
         getCategory()
     },[catalogName])
-    console.log("catalogName",catalogName)
+   // console.log("catalogName",catalogName)
 
-    console.log("categoryId",categoryId)
+   // console.log("categoryId",categoryId)
 
     useEffect(()=>{
        // console.log("categoryId",categoryId)
             const getCategoryDetails = async()=>{
-                console.log("categoryId",categoryId)
+                //console.log("categoryId",categoryId)
                 try{
                     const res = await getCatalogPageData(categoryId);
-                    console.log("resof catalog",res)
+                   // console.log("resof catalog",res)
                     setCatalogPageData(res)
 
                 }

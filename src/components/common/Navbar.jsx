@@ -30,12 +30,12 @@ export const Navbar = () => {
             setLoading(true)
             try{
                const result = await apiConnector("GET",categories.CATEGORIES_API); 
-               console.log("sublinks result", result)
+              // console.log("sublinks result", result)
                setSubLinks(result.data.data)  ; 
-               console.log(subLinks)
+               //console.log(subLinks)
             }
             catch(error){
-                console.log("could not fetch data",error)
+                //console.log("could not fetch data",error)
             }
             setLoading(false)
         })()
@@ -46,7 +46,7 @@ export const Navbar = () => {
         return matchPath({path:route}, location.pathname)
     }
 
-    console.log("subLinks",subLinks)
+    //console.log("subLinks",subLinks)
   return (
     <div  className='flex h-14 items-center border-b border-b-richblack-700 justify-center'>
 

@@ -67,15 +67,15 @@ export const CourseBuilderForm = () => {
             },token
         )
          }
-         console.log("result",result)
+        // console.log("result",result)
          // update value 
          if(result){
             dispatch(setCourse(result))
-            console.log("course",course)
+            //console.log("course",course)
             setEditSectionName(null);
             setValue("sectionNamen","")
          }
-         console.log("course1",course)
+         //console.log("course1",course)
 
          setLoading(false)
 
@@ -87,7 +87,7 @@ export const CourseBuilderForm = () => {
         }
         setEditSectionName(sectionId)
         setValue("sectionName", sectionName)
-        console.log("section id", sectionId)
+        //console.log("section id", sectionId)
       }
 
   return (

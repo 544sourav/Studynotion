@@ -9,7 +9,7 @@ import RatingStars from '../../../common/RatingStars';
 
 export const RenderCartCourses = () => {
     const{cart} = useSelector((state)=>state.cart)
-    console.log("cart>>",cart)
+    //console.log("cart>>",cart)
     const dispatch=useDispatch()
   return (
     <div className="flex flex- w-full flex-col">

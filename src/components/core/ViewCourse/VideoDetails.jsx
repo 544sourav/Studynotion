@@ -21,11 +21,11 @@ export const VideoDetails = () => {
     const[loading,setLoading]=useState(false)
     const location = useLocation()
     const [previewSource, setPreviewSource] = useState("")
-    console.log("courseSectionData",courseSectionData)
+   // console.log("courseSectionData",courseSectionData)
 
     useEffect(()=>{
         const setVideoSpecificDetails =()=>{
-            console.log("courseSectionDatain",courseSectionData)
+            //console.log("courseSectionDatain",courseSectionData)
             if(!courseSectionData.length)
                 return;
             if(!courseId && !sectionId && !subSectionId){

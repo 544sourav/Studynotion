@@ -18,10 +18,10 @@ const{
 export function updateProfile(token,formData){
     return async (dispatch)=>{
         const toastId = toast.loading("Loading...")
-        console.log(UPDATE_PROFILE_API)
+        //console.log(UPDATE_PROFILE_API)
         try{
             const response = await apiConnector("PUT",UPDATE_PROFILE_API,formData,{Authorization: `Bearer ${token}`})
-            console.log("printing response of updateprofile call>>",response)
+          //  console.log("printing response of updateprofile call>>",response)
 
             if(!response.data.success){
                 throw new Error(response.data.message)
@@ -50,14 +50,14 @@ export function updateProfile(token,formData){
 export function UpdateDisplayPicture(token,formData){
         return async(dispatch)=>{
             const toastId= toast.loading("Loading...")
-            console.log("printing form update display picture ")
+           // console.log("printing form update display picture ")
             try{
-                console.log("printing form update display picture 2")
+              //  console.log("printing form update display picture 2")
                 const response = await apiConnector("PUT",UPDATE_DISPLAY_PICTURE_API,formData,{
                     "Content-Type": "multipart/form-data",
                     Authorization:`Bearer ${token}`
                 })
-                console.log("Update Display picture>>",response)
+               // console.log("Update Display picture>>",response)
                 if(!response.data.success){
                     throw new Error(response.data.message)
                 }
@@ -85,9 +85,9 @@ export function UpdateDisplayPicture(token,formData){
 export function changePassword(token,formData){
         return async(dispatch)=>
             {
-                console.log("pasword came to update",formData)
+              //  console.log("pasword came to update",formData)
                 const toastId= toast.loading("Loading...")
-                console.log("password sent in the try block")
+               // console.log("password sent in the try block")
 
                 try{
 
@@ -95,7 +95,7 @@ export function changePassword(token,formData){
                        
                         Authorization:`Bearer ${token}`
                     })
-                    console.log("Update password detail>>",response)
+                 //   console.log("Update password detail>>",response)
                     if(!response.data.success){
                         throw new Error(response.data.message)
                     }
@@ -115,22 +115,22 @@ export function changePassword(token,formData){
 export function deleteAccount(token, navigate){
     return async (dispatch)=>{
         const toastId= toast.loading("Loading...")
-        console.log("printing form delete account")
+       // console.log("printing form delete account")
 
         try{
-            console.log("printing from try block")
+           // console.log("printing from try block")
             const response = await apiConnector("DELETE",DELETE_ACCOUNT_API,null,{
                 Authorization:`Bearer ${token}`
             })
-            console.log("account delete detail>>",response)
+           // console.log("account delete detail>>",response)
             if(!response.data.success){
 
                 throw new Error(response.data.message)
             }
             toast.success("Account deleted Successfully")
-                console.log("printing  after success toast")
+               // console.log("printing  after success toast")
               dispatch(logout(navigate))
-              console.log("printing  after success dispatch logout")
+             // console.log("printing  after success dispatch logout")
 
         }
         catch(error){

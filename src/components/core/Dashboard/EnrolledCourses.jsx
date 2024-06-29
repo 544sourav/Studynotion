@@ -7,7 +7,7 @@ import { setCompletedLectures, setCourseSectionData, setEntireCourseData, setTot
 
 export const EnrolledCourses = () => {
   const{token}= useSelector((state)=>state.auth);
-  console.log("this is token",token)
+ // console.log("this is token",token)
   const[enrolledCourses,setEnrolledCourses] = useState(null)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -16,7 +16,7 @@ export const EnrolledCourses = () => {
   const getEnrolledCourses = async()=>{
     try{
         const response = await getUserEnrolledCourses(token)
-        console.log("response",response)
+       // console.log("response",response)
         setEnrolledCourses(response)
     }
     catch(error){

@@ -35,9 +35,9 @@ export const UpdatePicture = () => {
         try{
             setLoading(true)
             const formData = new FormData()
-            console.log("image file",imageFile)
+            //console.log("image file",imageFile)
             formData.append("displayPicture", imageFile)
-            console.log("form upload handler",formData.get("displayPicture"))
+            //console.log("form upload handler",formData.get("displayPicture"))
 
             dispatch(UpdateDisplayPicture(token,formData)).then(()=>{
                 setLoading(false)

@@ -4,7 +4,7 @@ import { apiConnector } from '../apiconnector';
 import { catalogData } from '../apis';
 
 export const getCatalogPageData = async(categoryId) => {
-    console.log("categoryId apical",categoryId)
+    //console.log("categoryId apical",categoryId)
   
     const toastId = toast.loading("Please Wait");
 
@@ -13,7 +13,7 @@ export const getCatalogPageData = async(categoryId) => {
     try{
         const response = await apiConnector("POST",catalogData.CATALOGPAGEDATA_API,{categoryId: categoryId})
 
-        console.log("response>>",response)
+        //console.log("response>>",response)
         if(!response.data.success){
             throw new Error("Could not fetch Catagory page data")
         }

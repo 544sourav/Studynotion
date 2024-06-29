@@ -21,7 +21,7 @@ export function getPasswordResetToken(email,setEmailSent){
         try{
             const response = await apiConnector("POST",RESETPASSTOKEN_API,{email})
 
-            console.log( "RESET TOKEN",response)
+            //console.log( "RESET TOKEN",response)
 
             if(!response.data.success){
                 throw new Error(response.data.message)
@@ -45,7 +45,7 @@ export function resetPassword(password, confirmPassword, token,navigate){
         
         try{
             const response = await apiConnector("POST",RESETPASSWORD_API, {password, confirmPassword, token})
-            console.log('response',response)
+           // console.log('response',response)
             if(!response.data.success){
                 throw new Error(response.data.message)
              }
@@ -84,9 +84,9 @@ export  function signUp(
                     password,
                     confirmPassword,
                     otp})
-                    console.log('response is ',response)
+                    //console.log('response is ',response)
                     if(!response.data.success){
-                        console.log("error message")
+                       // console.log("error message")
                         throw new Error(response.data.message)
                      
                     }
@@ -111,7 +111,7 @@ export function sendOtp(email,navigate){
         dispatch(setLoading(true))
         try{
             const response = await apiConnector("POST",SENDOTP_API,{email})
-            console.log("response of otp is",response)
+           // console.log("response of otp is",response)
             if(!response.data.success){
                 throw new Error(response.data.message)
             }
@@ -135,7 +135,7 @@ export function login(email,password,navigate){
         dispatch(setLoading(true))
         try{
             const response = await apiConnector("POST",LOGIN_API,{email,password})
-            console.log("RESPONSE OF LOGIN >>>",response)
+            //console.log("RESPONSE OF LOGIN >>>",response)
             
             if(!response.data.success){
                 console.log("message is  is",response.data.message)
@@ -165,15 +165,15 @@ export function login(email,password,navigate){
 }
 export function logout(navigate) {
   return (dispatch) => {
-    console.log("printing from log out")
+   // console.log("printing from log out")
     dispatch(setToken(null))
     dispatch(setUser(null))
     dispatch(resetCart())
     localStorage.removeItem("token")
     localStorage.removeItem("user")
     toast.success("Logged Out")
-    console.log("printing after success toast in logout function")
+  //  console.log("printing after success toast in logout function")
     navigate("/")
-    console.log("after navigate in logout")
+   // console.log("after navigate in logout")
   }
 }
