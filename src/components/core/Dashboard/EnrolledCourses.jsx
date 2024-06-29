@@ -35,8 +35,8 @@ export const EnrolledCourses = () => {
   })
 
   return (
-    <div className='text-richblack-50 mt-10'>
-        <div className="text-3xl font-medium text-richblack-50">
+    <div className='text-richblack-50 '>
+        <div className="text-2xl md:text-3xl font-medium text-richblack-50">
           Enrolled Courses
         </div>
         {

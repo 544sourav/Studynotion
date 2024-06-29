@@ -6,7 +6,7 @@ import { UpdatePassword } from './UpdatePassword'
 
 export const Settings = () => {
   return (
-    <div className='mt-12'>
+    <div className=''>
       <h1 className='text-richblack-5 text-2xl md:text-3xl font-medium'> Edit Profile</h1>
         {/* update profile picture  */}
         <UpdatePicture/>

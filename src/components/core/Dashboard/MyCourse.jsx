@@ -32,7 +32,7 @@ export const MyCourses=()=> {
 
   return (
     <div>
-      <div className="mb-14 flex flex-col md:flex-row md:items-center justify-between mt-10">
+      <div className="mb-14 flex flex-col md:flex-row md:items-center justify-between ">
         <h1 className="text-2xl md:text-3xl font-medium text-richblack-5">My Courses</h1>
         <div className="flex gap-3 md:justify-between items-center">
         <IconButton

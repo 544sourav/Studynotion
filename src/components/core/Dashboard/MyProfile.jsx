@@ -8,8 +8,8 @@ export const MyProfile = () => {
      const{user}=useSelector((state)=>state.profile)
      const navigate=useNavigate()
   return (
-    <div className=' mt-10 '>
-        <h1 className='text-richblack-5 font-medium text-2xl sm:text-3xl mb-6 '>
+    <div className=''>
+        <h1 className='text-richblack-5 font-medium text-2xl md:text-3xl mb-6 '>
             My Profile
         </h1>
         {/* section1 */}

@@ -9,8 +9,9 @@ import useOnClickOutside from "../../../hooks/useOnClickOutside"
 import { logout } from "../../../services/operation/authApi"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import * as Icons from 'react-icons/vsc'
+import { IoMenuOutline } from "react-icons/io5"
 
-export default function ProfileDropdown({subLinks,loading}) {
+export default function ProfileDropdown({subLinks,loading,token}) {
   const { user } = useSelector((state) => state.profile)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -19,24 +20,33 @@ export default function ProfileDropdown({subLinks,loading}) {
 
   useOnClickOutside(ref, () => setOpen(false))
 
-  if (!user) return null
+  // if (!user) return null
 
   return (
     <button className="relative" onClick={() => setOpen(true)}>
       <div className="flex items-center gap-x-1">
-        <img
-          src={user?.image}
-          alt={`profile-${user?.firstName}`}
-          className="aspect-square w-[30px] rounded-full object-cover"
-        />
-        <AiOutlineCaretDown className="text-sm text-richblack-100" />
+        {
+          (token&&user) ? (
+            <div className="flex items-center gap-x-1">
+                <img
+                  src={user?.image}
+                  alt={`profile-${user?.firstName}`}
+                  className="aspect-square w-[30px] rounded-full object-cover"
+               />
+                <AiOutlineCaretDown className="text-sm text-richblack-100" />
+            </div>
+          ):(
+            <div className="text-white visible md:hidden "><IoMenuOutline className="text-2xl"/></div>
+          )
+        }
+        
       </div>
       {open && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="absolute top-[118%] right-0 z-[100] divide-y-[1px] divide-richblack-700  rounded-md border-[1px] border-richblack-700 bg-richblack-800"
+          className="absolute top-[118%] right-0 z-[100] divide-y-[1px] divide-richblack-700  rounded-md border-[1px] border-richblack-700 bg-richblack-800 "
           ref={ref}
-        >
+         >
           {
               NavbarLinks.map((link,index)=>{
                 const IconComponent = Icons[link.icon];
@@ -80,7 +90,7 @@ export default function ProfileDropdown({subLinks,loading}) {
                     </div>):(
                         <Link   onClick={() => setOpen(false)} to={link?.path}>
                           <p className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25">
-                          {IconComponent && <IconComponent />}
+                          {IconComponent && <IconComponent className="text-lg" />}
                             {link.title}
                           </p>
                         </Link>
@@ -90,22 +100,30 @@ export default function ProfileDropdown({subLinks,loading}) {
               
               )})
           }
-          <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
-            <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 border-t-[1px]  border-richblack-700 hover:bg-richblack-700 hover:text-richblack-25">
-              <VscDashboard className="text-lg" />
-              Dashboard
-            </div>
-          </Link>
-          <div
-            onClick={() => {
-              dispatch(logout(navigate))
-              setOpen(false)
-            }}
-            className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25"
-          >
-            <VscSignOut className="text-lg" />
-            Logout
-          </div>
+          {
+            (token&&user) ? (
+              <>
+                <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
+                  <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 border-t-[1px]  border-richblack-700 hover:bg-richblack-700 hover:text-richblack-25">
+                    <VscDashboard className="text-lg" />
+                    Dashboard
+                  </div>
+                </Link>
+                <div
+                  onClick={() => {
+                    dispatch(logout(navigate))
+                    setOpen(false)
+                  }}
+                  className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25"
+                >
+                  <VscSignOut className="text-lg" />
+                  Logout
+                </div>
+              </>
+
+            ):("")
+          }
+          
         </div>
       )}
     </button>

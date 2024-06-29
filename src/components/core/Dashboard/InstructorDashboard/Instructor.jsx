@@ -46,7 +46,7 @@ export const Instructor = () => {
     
 
   return (
-    <div className='text-white mt-10'>
+    <div className='text-white '>
        <div className="space-y-2">
         <h1 className=" text-xl sm:text-2xl font-bold text-richblack-5">Hi {user.firstName} 👋</h1>
         <p className=" font-normal sm:font-medium text-richblack-200">Lets start some thing new</p>

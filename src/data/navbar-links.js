@@ -15,7 +15,7 @@ export const NavbarLinks = [
     icon:"VscGlobe"
   },
   {
-    title: "Contact Us",
+    title: "Contact",
     path: "/contact",
     icon:"VscMail"
   },

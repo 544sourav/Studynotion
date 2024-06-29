@@ -141,19 +141,19 @@ export const Navbar = () => {
                 {
                     token === null && (
                         <Link to="/login">
-                            <button className=' border border-richblack-700 bg-richblack-800 px-2 md:px-3 md:py-2 py-1 text-richblack-25 rounded-md'>Log in</button>
+                            <button className=' border border-richblack-700 bg-richblack-800 px-2 sm:px-2 md:px-3 md:py-2 py-1 text-xs sm:text-base text-richblack-25 rounded-md'>Log in</button>
                         </Link>
                     )
                 }
                 {
                     token === null && (
                         <Link to="/signup">
-                            <button className=' border border-richblack-700 bg-richblack-800 px-2 md:px-3 md:py-2 py-1 text-richblack-25 rounded-md'>Sign Up</button>
+                            <button className=' border border-richblack-700 bg-richblack-800 px-2 sm:px-2 md:px-3 md:py-2 py-1 text-xs sm:text-base text-richblack-25 rounded-md'>Sign Up</button>
                         </Link>
                     )
                 }
                 {
-                    token!==null &&  <ProfileDropDown subLinks={subLinks} loading={loading} />
+                     <ProfileDropDown token={token} subLinks={subLinks} loading={loading} />
                 }
 
             </div>

@@ -3,9 +3,9 @@ import RenderSteps from "./RenderSteps"
 export const AddCourse=()=> {
   return (
     <>
-      <div className="flex w-full items-start gap-x-6 mt-10">
+      <div className="flex w-full items-start gap-x-6 ">
         <div className="flex flex-1 flex-col">
-          <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+          <h1 className="mb-14 text-2xl md:text-3xl font-medium text-richblack-5">
             Add Course <span className="text-[8px]  text-yellow-100"> Please Use Desktop mode for better Experience</span>
           </h1>
           <div className="flex-1">
