@@ -95,7 +95,7 @@ export  function signUp(
             }
             catch(error){
                     console.log("error in sign up",error)
-                    toast.error("unable to signup ")
+                    toast.error(error.response.data.message)
                     navigate("/signup")
             }
             dispatch(setLoading(false))
@@ -122,7 +122,7 @@ export function sendOtp(email,navigate){
         }
         catch(error){
             console.log("error is ",error)
-            toast.error("unable to send otp")
+            toast.error(error.response.data.message)
         }
         dispatch(setLoading(false))
         toast.dismiss(toastId)
@@ -155,7 +155,7 @@ export function login(email,password,navigate){
         }
         catch(error){
             console.log("error is ",error)
-            toast.error("unable to login")
+            toast.error(error.response.data.message)
         }
         dispatch(setLoading(false))
         toast.dismiss(toastId)

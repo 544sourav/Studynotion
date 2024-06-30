@@ -103,7 +103,7 @@ exports.signup = async(req,res) =>{
         if(existingUser){
             return res.status(400).json({
                 success:false,
-                message:'user is all ready  registered'
+                message:'user is already  registered'
             })
         }
     
@@ -167,7 +167,7 @@ exports.signup = async(req,res) =>{
         console.log(error);
         return res.status(500).json({
             success:false,
-            message: "user can not be registerd successfully try again later "
+            message: "server issue try again later "
         })
 
     }
@@ -241,7 +241,7 @@ exports.login = async (req,res)=>{
         console.log(error);
         return res.status(500).json({
             success:false,
-            message:'login fail'
+            message:'server error login fail'
         })
 
     }
