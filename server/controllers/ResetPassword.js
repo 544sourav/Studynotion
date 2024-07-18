@@ -33,7 +33,7 @@ exports.resetPasswordToken = async(req, res)=>{
             },
             {new:true});
     //create url
-    const url = `http://localhost:3000/update-password/${token}`;
+    const url = `https://studynotion-frontend-sourav.vercel.app/update-password/${token}`;
     //send email containing the url
     await mailSender(email,"Password Reset Link",`Password reset link ${url}`);
     // return response

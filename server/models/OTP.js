@@ -28,7 +28,7 @@ async function sendVerificationEmail(email, otp){
 
     }
     catch(error){
-        console.log("error  in sending error" ,error)
+        console.log("error  in sending email" ,error)
         throw error;
     }
 }

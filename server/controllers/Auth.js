@@ -31,13 +31,13 @@ exports.sendOTP = async (req,res)=>{
             lowerCaseAlphabets:false,
             specialChars:false,
         })
-        console.log("OTP generated ", otp);
+        //console.log("OTP generated ", otp);
 
         //check unique otp or not 
-        const result = await OTP.findOne({otp:otp});
+        let result = await OTP.findOne({otp:otp});
 
         while(result){
-            otp = otpGenerator(6,{
+            otp = otpGenerator.generate(6,{
                 upperCaseAlphabets:false,
                 lowerCaseAlphabets:false,
                 specialChars:false,

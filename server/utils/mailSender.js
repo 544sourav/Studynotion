@@ -17,7 +17,7 @@ const mailSender = async(email,title,body)=>{
             html:`${body}`,
 
         })
-        console.log("info",info);
+       // console.log("info",info);
         return info;
 
     }
