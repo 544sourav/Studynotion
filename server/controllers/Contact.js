@@ -1,5 +1,6 @@
 //hw
-const mailSender= require("../utils/mailSender")
+const mailSender= require("../utils/mailSender");
+const sendEmail = require("../utils/oauthmailsender");
 
 exports.contactUs = async (req,res)=>{
     try{
@@ -13,13 +14,21 @@ exports.contactUs = async (req,res)=>{
             
         }=req.body;
         
-        await mailSender(email,"Query Submitted -reg", `This email is to inform that your message hav been successfully submitted`);
-        await mailSender(process.env.MAIL_USER,`Query from student ${firstName} ${lastName} ` ,` student details:
+        await sendEmail(
+          email,
+          "Query Submitted -reg",
+          `This email is to inform that your message hav been successfully submitted`
+        );
+        await sendEmail(
+          process.env.MAIL_USER,
+          `Query from student ${firstName} ${lastName} `,
+          ` student details:
             name= ${firstName} ${lastName}
             Email= ${email}
             constactnummber=${countryCode} ${contactNumber}
             message=${message}
-            `)
+            `
+        );
 
             return res.status(200).json({
                 success:true,

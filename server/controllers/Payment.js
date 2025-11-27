@@ -7,170 +7,8 @@ const  mongoose  = require("mongoose");
 const crypto = require("crypto");
 const CourseProgress = require("../models/CourseProgress");
 const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
-
- 
-// //chnages required
-// //capture the payment
-
-//old for single course
-
-// exports.capturePayment = async (req,res)=>{
-//     //get course id and userid
-//     const {courseId}= req.body;
-//     const userId = req.user.id;
-
-
-//     // validation
-//     //valid courseId
-
-//     if(!courseId)
-//         {
-//             return res.json({
-//                 success:false,
-//                 message:'please provide valid course id'
-//             })
-//         }
-//     //valid courseDetails
-//     let course;
-//     try{
-//         course = await Course.findById(courseId);
-//         if(!course){
-//             return res.json({
-//                 success:false,
-//                 message:"course donot exist",
-//             })
-//         }
-//         // user already pay for the same course
-//         const uid = new mongoose.Types.ObjectId({userId})
-//       if (course.studentsEnrolled.includes(uid)) {
-//         return res.status(200).json(
-//             { success: false,
-//              message: "Student is already Enrolled"
-//             })
-//       }
-      
-
-//     }
-
-//     catch(error){
-//         return res.status(500).json({
-//             success:false,
-//             error:error.message
-//         })
-//     }
-
-//     //order created
-
-//     const amount = course.price;
-//     const currency = "INR";
-
-//     const options={
-//       amount : amount*100,
-//       currency,
-//       receipt: Math.random(Date.now()).toString(),
-//       notes:{
-//           courseId:courseId,
-//           userId,
-//       }
-//     };
-//     try{
-//         //initiate the payment
-//         const paymentResponse = await instacne.orders.create(options);
-//         console.log(paymentResponse);
-
-//         //response
-//         return res.json({
-//             success:true,
-//             courseName:course.courseName,
-//             courseDescription:course.courseDescription,
-//             thumbnail: course.thumbnail, 
-//             orderId:paymentResponse.id,
-//             currency:paymentResponse.currency,
-//             amount:paymentResponse.amount
-
-
-//         })
-//     }
-//     catch(error){
-//         console.log(error)
-//         return res.json({
-//             success:false,
-//             message:"could not initiate order"
-//         })
-//     }   
-// }
-// //verify signature of razorpay
-
-// exports.verifySignature = async(req,res)=>{
-//     const webhookSecret ="12345678";
-//     const signature = req.headers["x-razorpay-signature"];
-    
-//     const shasum = crypto.createHmac("sha256",webhookSecret);
-//     // when we run a hashing algo the output is alson known by a term digest bassicaly in hexa decimal formate
-//     shasum.update(JSON.stringify(req.body));
-//     const digest = shasum.digest("hex");
-
-//     if(signature === digest){
-
-//         console.log("payment is authorised");
-
-//         const {courseId,userId}= req.body.payload.entiry.notes;
-//         try{
-//             const enrolledCourse = await Course.findByOneAndUpdate( {_id: courseId},
-//                 {
-//                     $push:{studentsEnrolled:userId}
-//                 },
-//                 {new:true},)
-
-//                 if(!enrolledCourse){
-//                     return res.starus(500).json({
-//                         success:false,
-//                         message:"course not found"
-//                     })
-//                 }
-//                 console.log(enrolledCourse);
-               
-//                 //find th student  and add the course
-
-//                 const enrolledStudent = await User.findOneAndUpdate({_id:userId},
-//                     {$push:{courses:courseId}},
-//                     {new:true}
-//                 )
-//                 console.log(enrolledStudent)
-//                 //send confirmation email
-//                 const emailResponse = await mailSender(
-//                                 enrolledStudent.email,
-//                                 "congratulation form  StudyNotion",
-//                                 "Congratulation you are enrolled in the course"
-//                 );
-
-//                 return res.status(200).json({
-//                     success:true,
-//                     message:" signature verified and student enrolled"
-//                 })
-            
-//         }
-//         catch(error){
-//             return res.status(500).json({
-//                 success:false,
-//                 message:error,
-//             })
-
-
-
-//         }
-
-
-           
-//     }
-//     else{
-//         return res.status(400).json({
-//             success:false,
-//             message:"signature is not verified"
-//         })
-//     }
-// }
-
+const sendEmail = require("../utils/oauthmailsender");
+//const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
 
 //new with changes
 
@@ -294,7 +132,7 @@ exports.capturePayment = async (req, res) => {
     try {
       const enrolledStudent = await User.findById(userId)
   
-      await mailSender(
+      await sendEmail(
         enrolledStudent.email,
         `Payment Received`,
         paymentSuccessEmail(
@@ -303,7 +141,7 @@ exports.capturePayment = async (req, res) => {
           orderId,
           paymentId
         )
-      )
+      );
     } catch (error) {
       console.log("error in sending mail", error)
       return res
@@ -357,14 +195,14 @@ exports.capturePayment = async (req, res) => {
   
         console.log("Enrolled student: ", enrolledStudent)
         // Send an email notification to the enrolled student
-        const emailResponse = await mailSender(
+        const emailResponse = await sendEmail(
           enrolledStudent.email,
           `Successfully Enrolled into ${enrolledCourse.courseName}`,
           courseEnrollmentEmail(
             enrolledCourse.courseName,
             `${enrolledStudent.firstName} ${enrolledStudent.lastName}`
           )
-        )
+        );
   
         console.log("Email sent successfully: ", emailResponse.response)
       } catch (error) {

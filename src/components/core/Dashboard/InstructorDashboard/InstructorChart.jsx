@@ -63,7 +63,7 @@ export const InstructorChart = ({courses}) => {
             </button>
         </div>
 
-        <div className="relative mx-auto aspect-square h-full w-full">
+        <div className="relative mx-auto aspect-square h-[250px] w-[250px]">
             <Doughnut
              data={currentChart==='students'? chartDataForStudents:chartDataForIncome}
              options={options}

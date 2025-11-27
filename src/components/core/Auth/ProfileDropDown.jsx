@@ -46,7 +46,7 @@ export default function ProfileDropdown({subLinks,loading,token}) {
           onClick={(e) => e.stopPropagation()}
           className="absolute top-[118%] right-0 z-[100] divide-y-[1px] divide-richblack-700  rounded-md border-[1px] border-richblack-700 bg-richblack-800 "
           ref={ref}
-         >
+        >
           {
               NavbarLinks.map((link,index)=>{
                 const IconComponent = Icons[link.icon];

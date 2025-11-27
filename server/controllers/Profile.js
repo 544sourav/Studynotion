@@ -31,6 +31,7 @@ exports.updateProfile= async(req,res)=>{
         })
         await user.save()
         //uppdate profile'
+        // eslint-disable-next-line no-unused-expressions
         profileDetails.dateOfBirth=dateOfBirth,
         profileDetails.gender=gender,
         profileDetails.about=about,

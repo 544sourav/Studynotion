@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt");
 const Course = require("../models/Course");
 const mailSender = require("../utils/mailSender");
+const sendEmail = require("../utils/oauthmailsender");
 require("dotenv").config()
 
 // send otp
@@ -282,7 +283,11 @@ exports.changePassword = async(req,res)=>{
          updateUserDetails.password=undefined
 
          try{
-            const emailResponse = await mailSender(updateUserDetails.email,"Studynotion password change notification",`dear ${updateUserDetails.firstName} ${updateUserDetails.lastName} your password have been changed successfully`)
+            const emailResponse = await sendEmail(
+              updateUserDetails.email,
+              "Studynotion password change notification",
+              `dear ${updateUserDetails.firstName} ${updateUserDetails.lastName} your password have been changed successfully`
+            );
          }
          catch(error){
             return res.status(500).json({

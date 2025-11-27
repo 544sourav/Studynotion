@@ -2,6 +2,7 @@ const User = require('../models/User');
 const mailSender = require('../utils/mailSender');
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const sendEmail = require('../utils/oauthmailsender');
 
 
 exports.resetPasswordToken = async(req, res)=>{
@@ -35,7 +36,7 @@ exports.resetPasswordToken = async(req, res)=>{
     //create url
     const url = `https://studynotion-frontend-sourav.vercel.app/update-password/${token}`;
     //send email containing the url
-    await mailSender(email,"Password Reset Link",`Password reset link ${url}`);
+    await sendEmail(email, "Password Reset Link", `Password reset link ${url}`);
     // return response
     return res.status(200).json({
         success:true,
