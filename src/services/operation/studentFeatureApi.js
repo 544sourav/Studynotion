@@ -35,8 +35,7 @@ function loadScript (src){
 
 export async function buyCourse(token, courses, userDetails, navigate, dispatch){
     const toastId = toast.loading('please Wait')
-    console.log("razorpay key>>",process.env.REACT_APP_RAZORPAY_KEY);
-    console.log("REACT_APP_BASEURL",process.env.REACT_APP_BASEURL);
+ 
     try{
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
 
